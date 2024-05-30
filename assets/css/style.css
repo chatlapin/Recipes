@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;700&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: #ededed;
+  max-width: 1440px;
+  margin: auto;
+}
+
+main {
+  padding: 17px 102px 201px;
+}
+
+* {
+  font: 14px "Manrope", sans-serif;
+  font-weight: 400;
+}
+
+/* title font family  */
+.hero__title {
+  font-family: "Anton", sans-serif;
+}
+
+.hero__search-container {
+  font-size: 18px;
+}
+
+.hero__title {
+  font-size: 42px;
+  text-transform: uppercase;
+}
+
+/*************************************** color */
+* {
+  color: #1b1b1b;
+}
+
+.hero__title {
+  color: #ffd15b;
+  text-align: center;
+}
+
+/***************************** HERO HEADER *****************************/
+.hero {
+  background-image: url("../photos/lampos-aritonang-24gR_9lCdes-unsplash-1.webp");
+  background-repeat: no-repeat;
+  height: 667px;
+}
+.hero__logo {
+  padding: 45px 69px 93px;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.hero__title {
+  margin: 80px 375px 0;
+}
+.hero__search-container {
+  background-color: #ffffff;
+  border-radius: 11px;
+  margin: 30px auto;
+  width: 66%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+#search-input {
+  border: none;
+  width: 100%;
+  font-size: 18px;
+}
+
+/***************************** card container *****************************/
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 70px;
+  justify-content: space-between;
+}
+
+.card {
+  background-color: white;
+  padding: 10px;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 21px;
+  width: 380px;
+}
+
+.card img {
+  position: relative; /* Enable absolute positioning for text */
+  overflow: hidden;
+  width: 380px;
+  object-fit: cover;
+  height: 253px;
+  border-radius: 21px;
+}
+
+.card h2 {
+  font: 18px "Anton", sans-serif;
+  font-weight: 400;
+}
+
+.card h3 {
+  font: 12px "Manrope", sans-serif;
+  font-weight: 700;
+}
+
+.card p {
+  font: 14px "Manrope", sans-serif;
+  font-weight: 400;
+  margin-bottom: 0;
+}
