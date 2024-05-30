@@ -36,3 +36,11 @@ function updateCards(recipes) {
     container.innerHTML += generateRecipeHTML(recipe, images[index]);
   });
 }
+
+const filterButtons = document.querySelectorAll(".filters button");
+
+filterButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    button.classList.toggle("active"); // Toggle "active" class on click
+  });
+});

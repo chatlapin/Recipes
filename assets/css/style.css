@@ -13,7 +13,7 @@ body {
 }
 
 main {
-  padding: 17px 102px 201px;
+  padding: 0;
 }
 
 * {
@@ -74,6 +74,45 @@ main {
   border: none;
   width: 100%;
   font-size: 18px;
+}
+
+/***************************** filter button *****************************/
+filters {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.filters button {
+  background-color: white; /* Green background */
+  color: black;
+  font: manorope;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 10px 20px;
+  margin: 5px;
+  border: none;
+  cursor: pointer;
+  width: 195px;
+  height: 56px;
+  padding: 17px, 16px, 17px, 16px;
+  border-radius: 11px;
+  position: relative; /* Needed for arrow positioning */
+}
+
+.filters button .arrow {
+  /* Style the arrow element itself (replace with your desired arrow character/image) */
+  content: "\u25BC"; /* Down arrow character code */
+  font-size: 12px;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%); /* Center the arrow vertically */
+}
+
+/* Style for the "clicked" state (optional) */
+.filters button.active .arrow {
+  transform: translateY(-50%) rotate(180deg); /* Rotate arrow up when clicked */
 }
 
 /***************************** card container *****************************/
