@@ -17,6 +17,10 @@
       href="assets/photos/lampos-aritonang-24gR_9lCdes-unsplash-1.webp"
     />
     <title>Les petits plats</title>
+   <style>
+
+
+</style>
   </head>
 
   <body>
@@ -46,16 +50,59 @@
       </input>
       </div>
     </header>
-    <main>
-      <!-- ************************* FILTERS ************************* -->
-<div class="filters">
-<button id="filter-ingredient">Ingrédient <img src="./assets/photos/Vector.jpg" alt="Vector Image" style="margin-left: 5px;"><span class="arrow"></span></button>
-<button id="filter-appliance">Appareil <img src="./assets/photos/Vector.jpg" alt="Vector Image" style="margin-left: 5px;"><span class="arrow"></span></button>
-<button id="filter-utensil">Ustensile <img src="./assets/photos/Vector.jpg" alt="Vector Image" style="margin-left: 5px;"><span class="arrow"></span></button>
-</div>
+    <main>       
 
-<div class="recipes">
-        </div>
+      <!-- ************************* FILTERS ************************* -->
+<tbody>
+      <tr>
+  <td>
+    <select id="ingredient">
+      <option value="ingredient">ingredient</option>
+        <option value="ingredient-coco">coco</option>
+</select> 
+<script>
+  const url= './assets/data/recipes.json';
+  const ingredient = document.getElementById('ingredient');
+
+  <!--f section-->
+
+
+</script>
+</p>
+</div>
+</td>
+<td>
+<button class="accordion">Appareil <img src="./assets/photos/Vector.jpg" alt="Vector Image" style="margin-left: 5px;"><span class="arrow"></span></button>
+<div class="panel">
+  <p id="panel-appareil" >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>
+</td>
+<td>
+<button class="accordion">Ustensile <img src="./assets/photos/Vector.jpg" alt="Vector Image" style="margin-left: 5px;"><span class="arrow"></span></button>
+<div class="panel">
+  <p id="panel-ustensile">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>
+</td>
+</tr>
+</tbody>
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+
+</script>
 
 <h2>
   <span id="counterResults">0</span>

@@ -77,13 +77,8 @@ main {
 }
 
 /***************************** filter button *****************************/
-filters {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.filters button {
-  background-color: white; /* Green background */
+.accordion {
+  background-color: white;
   color: black;
   font: manorope;
   font-size: 16px;
@@ -99,14 +94,17 @@ filters {
   position: relative; /* Needed for arrow positioning */
 }
 
-.filters button .arrow {
-  /* Style the arrow element itself (replace with your desired arrow character/image) */
-  content: "\u25BC"; /* Down arrow character code */
-  font-size: 12px;
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%); /* Center the arrow vertically */
+.active,
+.accordion:hover {
+  background-color: #ccc;
+}
+
+.panel {
+  padding: 0 18px;
+  display: none;
+  background-color: white;
+  overflow: hidden;
+
 }
 
 /***************************** card container *****************************/

@@ -55,3 +55,34 @@ inputSearch.addEventListener("input", () => {
   displayRecipes();
 });
 
+  // Fetch data from JSON file and  ["Lait de coco", ...] (list of ingredient names)
+fetch("recipes.json")
+  .then((response) => response.json())
+  .then((data) => {
+    const recipes = data;
+
+    // Extract all ingredients from the recipes
+    const ingredients = recipes.reduce((acc, recipe) => {
+      recipe.ingredients?.forEach((ingredient) => {
+        acc.add(ingredient.ingredient);
+      });
+      return acc;
+    }, new Set());
+
+   // Create an array from the Set
+    const ingredientsArray = Array.from(ingredients);
+
+    // Display the ingredients in the console
+    console.log(ingredientsArray);
+
+    //request id="option-ingredient" and add options with the ingredientsArray
+    const optionIngredient = document.getElementById("option-ingredient");
+    ingredientsArray.forEach((ingredient) => {
+      const option = document.createElement("option");
+      option.value = ingredient;
+      option.textContent = ingredient;
+      optionIngredient.appendChild(option);
+    });
+  }
+
+
