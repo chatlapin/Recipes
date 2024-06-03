@@ -1,48 +1,20 @@
+const container = document.querySelector(".container");
+const inputSearch = document.getElementById("search-input"); // getElementById Highly specific (unique IDs) 	Generally faster and querySelector More flexible (CSS selectors) May be slower (depending on selector complexity)// getElementById Highly specific (unique IDs) 	Generally faster and querySelector More flexible (CSS selectors) May be slower (depending on selector complexity)
 let currentRecipes = [];
 
-async function getInitialRecipes() {
-  const response = await fetch("./assets/data/recipes.json");
-  const recipes = await response.json();
-  return recipes;
-}
+// Fetch data from JSON file
+fetch("assets/data/recipes.json")
+  .then((response) => response.json())
+  .then((data) => {
+    currentRecipes = data;
+    displayRecipes();
+  });
 
-async function init() {
-  currentRecipes = await getInitialRecipes();
-  //console.log("currentRecipes");
-  //console.log(currentRecipes);
-  displayRecipes();
-}
-
-init();
-
-const inputSearch = document.querySelector("#search-input");
-inputSearch.addEventListener("input", searchRecipes);
-function searchRecipes(event) {
-  const searchValue = event.target.value.toLowerCase();
-  if (searchValue.length < 3) {
-    return;
-  }
-  console.log("searchValue");
-  console.log(searchValue);
-  currentRecipes = currentRecipes.filter(
-    (recipe) =>
-      recipe.name.toLowerCase().includes(searchValue) ||
-      recipe.description.toLowerCase().includes(searchValue) ||
-      recipe.ingredients.some((ingredient) =>
-        ingredient.ingredient.toLowerCase().includes(searchValue)
-      )
-  );
-  displayRecipes();
-}
-
+// 각 요소 데이터를 쓰기
 function displayRecipes() {
-  const counterResults = document.querySelector("#counterResults");
-  counterResults.innerText = currentRecipes.length;
-
   // 컨테이너
-  const container = document.querySelector(".container");
   container.innerHTML = "";
-  // recipesDatat 배열의 각 요소별 루프 처리
+  // recipesData 배열의 각 요소별 루프 처리
   currentRecipes.forEach((recipeData) => {
     // 각 요소 데이터를 쓰기
     container.innerHTML += `
@@ -69,21 +41,17 @@ function displayRecipes() {
   `;
   });
 }
-/*
-// Function to update displayed cards
-function updateCards(recipes) {
-  container.innerHTML = "";
-  recipes.forEach((recipe, index) => {
-    container.innerHTML += generateRecipeHTML(recipe, images[index]);
-  });
-}}
-*/
-/*
-const filterButtons = document.querySelectorAll(".filters button");
 
-filterButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    button.classList.toggle("active"); // Toggle "active" class on click
-  });
+// 검색 입력 필드에 입력 이벤트 추가
+inputSearch.addEventListener("input", () => {
+  // 입력 필드의 값이 변경될 때마다 호출
+  const searchValue = inputSearch.value.toLowerCase().trim();
+  // 검색어가 포함된 레시피만 필터링
+  currentRecipes = searchValue
+    ? currentRecipes.filter((recipe) =>
+        recipe.name.toLowerCase().includes(searchValue)
+      )
+    : recipesData;
+  displayRecipes();
 });
-*/
+

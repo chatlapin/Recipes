@@ -109,11 +109,6 @@ filters {
   transform: translateY(-50%); /* Center the arrow vertically */
 }
 
-/* Style for the "clicked" state (optional) */
-.filters button.active .arrow {
-  transform: translateY(-50%) rotate(180deg); /* Rotate arrow up when clicked */
-}
-
 /***************************** card container *****************************/
 .container {
   margin-top: 40px;
