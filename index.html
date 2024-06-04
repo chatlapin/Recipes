@@ -51,41 +51,18 @@
       </div>
     </header>
     <main>       
-
-      <!-- ************************* FILTERS ************************* -->
-<tbody>
-      <tr>
-  <td>
-    <select id="ingredient">
-      <option value="ingredient">ingredient</option>
-        <option value="ingredient-coco">coco</option>
-</select> 
-<script>
-  const url= './assets/data/recipes.json';
-  const ingredient = document.getElementById('ingredient');
-
-  <!--f section-->
-
-
-</script>
-</p>
-</div>
-</td>
-<td>
-<button class="accordion">Appareil <img src="./assets/photos/Vector.jpg" alt="Vector Image" style="margin-left: 5px;"><span class="arrow"></span></button>
+   <button class="accordion">Ingredient <img src="./assets/photos/Vector.jpg" alt="Vector Image" style="margin-left: 5px;"><span class="arrow"></span></button>
 <div class="panel">
   <p id="panel-appareil" >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 </div>
-</td>
-<td>
+      <button class="accordion">Appareil <img src="./assets/photos/Vector.jpg" alt="Vector Image" style="margin-left: 5px;"><span class="arrow"></span></button>
+<div class="panel">
+  <p id="panel-appareil" >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>
 <button class="accordion">Ustensile <img src="./assets/photos/Vector.jpg" alt="Vector Image" style="margin-left: 5px;"><span class="arrow"></span></button>
 <div class="panel">
   <p id="panel-ustensile">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 </div>
-</td>
-</tr>
-</tbody>
-
 <script>
 var acc = document.getElementsByClassName("accordion");
 var i;
@@ -114,4 +91,5 @@ for (i = 0; i < acc.length; i++) {
   </body>
 
   <script src="./script/main.js"></script>
+    <script src="./script/tag.js"></script>
 </html>
