@@ -1,95 +1,92 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <!-- encoding definition -->
-    <meta charset="utf-8" />
-    <!-- mobile optimization -->
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <!-- compatible edge -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- css -->
-    <link href="./assets/css/style.css" rel="stylesheet" />
-    <!-- Preload the LCP image with a high fetchpriority so it starts loading with the stylesheet. -->
-    <link
-      rel="preload"
-      fetchpriority="high"
-      as="image"
-      href="assets/photos/lampos-aritonang-24gR_9lCdes-unsplash-1.webp"
-    />
-    <title>Les petits plats</title>
-   <style>
+
+<head>
+  <!-- encoding definition -->
+  <meta charset="utf-8" />
+  <!-- mobile optimization -->
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <!-- compatible edge -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- css -->
+  <link href="./assets/css/style.css" rel="stylesheet" />
+  <!-- Preload the LCP image with a high fetchpriority so it starts loading with the stylesheet. -->
+  <link rel="preload" fetchpriority="high" as="image"
+    href="assets/photos/lampos-aritonang-24gR_9lCdes-unsplash-1.webp" />
+  <title>Les petits plats</title>
+  <style>
 
 
-</style>
-  </head>
+  </style>
+</head>
 
-  <body>
-    <!-- ************************* HERO HEADER ************************* -->
-    <header class="hero">
-      <!-- logo -->
-      <div class="hero__logo">
-        <img src="./assets/data/logo/logo.png" alt="Logo Les petits plats" />
-      </div>
-      <!-- title -->
-      <h1 class="hero__title" id="hero-title">
-        Cherchez parmi plus de 1500 recettes du quotidien, simples et
-        délicieuses
-      </h1>
-      <!-- search bar -->
-      <div class="hero__search-container">
-        <input
-          id="search-input"
-          class="search-input"
-          type="text"
-          placeholder="Rechercher une recette, un ingrédient, ..."
-        >
-          <img
-            src="./assets/photos/Loop.jpg"
-            alt="Logo Les petits plats"
-          />
+<body>
+  <!-- ************************* HERO HEADER ************************* -->
+  <header class="hero">
+    <!-- logo -->
+    <div class="hero__logo">
+      <img src="./assets/data/logo/logo.png" alt="Logo Les petits plats" />
+    </div>
+    <!-- title -->
+    <h1 class="hero__title" id="hero-title">
+      Cherchez parmi plus de 1500 recettes du quotidien, simples et
+      délicieuses
+    </h1>
+    <!-- search bar -->
+    <div class="hero__search-container">
+      <input id="search-input" class="search-input" type="text"
+        placeholder="Rechercher une recette, un ingrédient, ...">
+      <img src="./assets/photos/Loop.jpg" alt="Logo Les petits plats" />
       </input>
-      </div>
-    </header>
-    <main>       
-   <button class="accordion">Ingredient <img src="./assets/photos/Vector.jpg" alt="Vector Image" style="margin-left: 5px;"><span class="arrow"></span></button>
-<div class="panel">
-  <p id="panel-appareil" >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
-      <button class="accordion">Appareil <img src="./assets/photos/Vector.jpg" alt="Vector Image" style="margin-left: 5px;"><span class="arrow"></span></button>
-<div class="panel">
-  <p id="panel-appareil" >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
-<button class="accordion">Ustensile <img src="./assets/photos/Vector.jpg" alt="Vector Image" style="margin-left: 5px;"><span class="arrow"></span></button>
-<div class="panel">
-  <p id="panel-ustensile">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
-<script>
-var acc = document.getElementsByClassName("accordion");
-var i;
+    </div>
+  </header>
+  <main>
+    <button class="accordion">Ingredient <img src="./assets/photos/Vector.jpg" alt="Vector Image"
+        style="margin-left: 5px;"><span class="arrow"></span></button>
+    <div class="panel">
+      <ul id="panel-ingredients"></ul>
+    </div>
+    <ul id="filters-ingredients"></ul>
+    <button class="accordion">Appareil <img src="./assets/photos/Vector.jpg" alt="Vector Image"
+        style="margin-left: 5px;"><span class="arrow"></span></button>
+    <div class="panel">
+      <ul id="panel-appareils"></ul>
+    </div>
+    <ul id="filters-appareils"></ul>
+    <button class="accordion">Ustensile <img src="./assets/photos/Vector.jpg" alt="Vector Image"
+        style="margin-left: 5px;"><span class="arrow"></span></button>
+    <div class="panel">
+      <ul id="panel-ustensiles"></ul>
+    </div>
+    <ul id="filters-ustensiles"></ul>
+    <script>
+      var acc = document.getElementsByClassName("accordion");
+      var i;
 
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var panel = this.nextElementSibling;
-    if (panel.style.display === "block") {
-      panel.style.display = "none";
-    } else {
-      panel.style.display = "block";
-    }
-  });
-}
+      for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+          this.classList.toggle("active");
+          var panel = this.nextElementSibling;
+          if (panel.style.display === "block") {
+            panel.style.display = "none";
+          } else {
+            panel.style.display = "block";
+          }
+        });
+      }
 
-</script>
+    </script>
 
-<h2>
-  <span id="counterResults">0</span>
-   recettes trouvées
-</h2>
-      <!-- ************************* RECIPES CARDS ************************* -->
-      <div class="container"></div>
-    </main>
-  </body>
+    <h2>
+      <span id="counterResults">0</span>
+      recettes trouvées
+    </h2>
+    <!-- ************************* RECIPES CARDS ************************* -->
+    <div class="container"></div>
+  </main>
+</body>
 
-  <script src="./script/main.js"></script>
-    <script src="./script/tag.js"></script>
+<!-- ************************* SCRIPTS ************************* -->
+<script type="module" src="./script/main.js"></script>
+
 </html>
