@@ -51,15 +51,22 @@ main {
   background-repeat: no-repeat;
   height: 690px;
 }
+
 .hero__logo {
   padding: 45px 69px 93px;
   width: -moz-fit-content;
   width: fit-content;
 }
 
+#ellipse{
+  border-radius: 10px;
+  margin-left: 12px;
+}
+
 .hero__title {
   margin: 80px 375px 0;
 }
+
 .hero__search-container {
   background-color: #ffffff;
   border-radius: 11px;
@@ -91,7 +98,8 @@ main {
   height: 56px;
   padding: 17px, 16px, 17px, 16px;
   border-radius: 11px;
-  position: relative; /* Needed for arrow positioning */
+  position: relative;
+  /* Needed for arrow positioning */
 }
 
 .active,
@@ -118,7 +126,6 @@ main {
 
 .card {
   background-color: white;
-  padding: 10px;
   color: #fff;
   border: 1px solid #fff;
   border-radius: 21px;
@@ -126,12 +133,33 @@ main {
 }
 
 .card img {
-  position: relative; /* Enable absolute positioning for text */
   overflow: hidden;
-  width: 380px;
+  width: 100%;
   object-fit: cover;
   height: 253px;
-  border-radius: 21px;
+  border-top-left-radius: 21px;
+  border-top-right-radius: 21px;
+}
+
+.user-wrap {
+	width: 100%;
+	position: relative;
+	img {
+		width: 100%;
+		vertical-align: middle;
+	}
+}
+.user-text {
+  background-color:#ffd15b;
+  border-radius: 14px;
+  padding: 5px 15px;
+  position: absolute;
+  right: 20px;
+  top: 21px;
+}
+
+.card-content {
+	padding: 20px;
 }
 
 .card h2 {
@@ -148,4 +176,53 @@ main {
   font: 14px "Manrope", sans-serif;
   font-weight: 400;
   margin-bottom: 0;
+}
+
+
+.panel ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.tag {
+  padding: 10px 20px;
+}
+
+.tag:hover {
+  background-color: #ffd15b;
+  cursor: pointer;
+}
+
+#filters-ingredients,
+#filters-appareils,
+#filters-ustensiles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.tag-filter {
+  background-color: #ffd15b;
+  border-radius: 10px;
+  padding: 17px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tag-filter button {
+  background-color: transparent;
+  border: none;
+  color: #1b1b1b;
+  font-weight: 500;
+  padding: 0;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  transition: all 0.3s;
+}
+
+.tag-filter button:hover {
+  cursor: pointer;
+  background-color: black;
+  color: #ffd15b;
 }

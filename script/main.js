@@ -1,38 +1,33 @@
 import { displayTagsRecipes } from "./displays.js";
 
 let initialRecipes = [];
-let currentRecipes = []; //global scope variable
-let filters = {
-  //global scope variable
+let currentRecipes = [];//global scope variable
+let filters = {//global scope variable
   appareils: [],
   ingredients: [],
   ustensiles: [],
 };
 
 function addTagIngredientClickEvent() {
-  const tagsIngredients = document.querySelectorAll(".tag.tag-ingredient");
-  const tagsIngredientsContainer = document.querySelector(
-    "#filters-ingredients"
-  );
-  tagsIngredients.forEach((tag) => {
-    tag.addEventListener("click", () => {
+  const tagsIngredients = document.querySelectorAll('.tag.tag-ingredient');
+  const tagsIngredientsContainer = document.querySelector('#filters-ingredients');
+  tagsIngredients.forEach(tag => {
+    tag.addEventListener('click', () => {
       const tagValue = tag.dataset.valeur;
       console.log(tagValue);
       if (!filters.ingredients.includes(tagValue)) {
         filters.ingredients.push(tagValue);
-        const tagFilterElement = document.createElement("li");
-        tagFilterElement.classList.add("tag-filter");
-        const span = document.createElement("span");
+        const tagFilterElement = document.createElement('li');
+        tagFilterElement.classList.add('tag-filter');
+        const span = document.createElement('span');
         span.textContent = tagValue;
         tagFilterElement.appendChild(span);
-        const button = document.createElement("button");
-        button.classList.add("remove-tag");
-        button.textContent = "x";
-        button.addEventListener("click", () => {
-          filters.ingredients = filters.ingredients.filter(
-            (ingredient) => ingredient !== tagValue
-          );
-          updateFiltersResults();
+        const button = document.createElement('button');
+        button.classList.add('remove-tag');
+        button.textContent = 'x';
+        button.addEventListener('click', () => {
+          filters.ingredients = filters.ingredients.filter(ingredient => ingredient !== tagValue);
+          updateFiltersResults()
           button.parentElement.remove();
         });
         tagFilterElement.appendChild(button);
@@ -41,91 +36,81 @@ function addTagIngredientClickEvent() {
         displayTagsRecipes(currentRecipes);
         applyTagsClickEvent();
       } else {
-        filters.ingredients = filters.ingredients.filter(
-          (ingredient) => ingredient !== tagValue
-        );
+        filters.ingredients = filters.ingredients.filter(ingredient => ingredient !== tagValue);
       }
     });
   });
 }
 
 function addTagAppareilClickEvent() {
-  const tagsAppareils = document.querySelectorAll(".tag-appareil");
-  const tagsAppareilsContainer = document.querySelector("#filters-appareils");
-  tagsAppareils.forEach((tag) => {
-    tag.addEventListener("click", () => {
+  const tagsAppareils = document.querySelectorAll('.tag-appareil');
+  const tagsAppareilsContainer = document.querySelector('#filters-appareils');
+  tagsAppareils.forEach(tag => {
+    tag.addEventListener('click', () => {
       //const tagValue = tag.getAttribute('data-valeur');
       const tagValue = tag.dataset.valeur;
       console.log(tagValue);
       if (!filters.appareils.includes(tagValue)) {
         filters.appareils.push(tagValue);
-        const tagFilterElement = document.createElement("li");
-        tagFilterElement.classList.add("tag-filter");
-        const span = document.createElement("span");
+        const tagFilterElement = document.createElement('li');
+        tagFilterElement.classList.add('tag-filter');
+        const span = document.createElement('span');
         span.textContent = tagValue;
         tagFilterElement.appendChild(span);
-        const button = document.createElement("button");
-        button.classList.add("remove-tag");
-        button.textContent = "x";
-        button.addEventListener("click", () => {
-          filters.appareils = filters.appareils.filter(
-            (appareil) => appareil !== tagValue
-          );
-          updateFiltersResults();
+        const button = document.createElement('button');
+        button.classList.add('remove-tag');
+        button.textContent = 'x';
+        button.addEventListener('click', () => {
+          filters.appareils = filters.appareils.filter(appareil => appareil !== tagValue);
+          updateFiltersResults()
           button.parentElement.remove();
         });
         tagFilterElement.appendChild(button);
         tagsAppareilsContainer.appendChild(tagFilterElement);
-        applyFilters(); //mise à jour currentRecipes
+        applyFilters();//mise à jour currentRecipes
         displayTagsRecipes(currentRecipes);
         applyTagsClickEvent();
         //tagsAppareilsContainer.innerHTML += `<li class="tag-filter"><span>${tagValue}</span> <button class="remove-tag">x</button> </li> `;
       } else {
-        filters.appareils = filters.appareils.filter(
-          (appareil) => appareil !== tagValue
-        );
+        filters.appareils = filters.appareils.filter(appareil => appareil !== tagValue);
       }
     });
   });
 }
 
 function addTagUstensileClickEvent() {
-  const tagsUstensiles = document.querySelectorAll(".tag-ustensile");
-  const tagsUstensilesContainer = document.querySelector("#filters-ustensiles");
-  tagsUstensiles.forEach((tag) => {
-    tag.addEventListener("click", () => {
+  const tagsUstensiles = document.querySelectorAll('.tag-ustensile');
+  const tagsUstensilesContainer = document.querySelector('#filters-ustensiles');
+  tagsUstensiles.forEach(tag => {
+    tag.addEventListener('click', () => {
       const tagValue = tag.dataset.valeur;
       console.log(tagValue);
       if (!filters.ustensiles.includes(tagValue)) {
         filters.ustensiles.push(tagValue);
-        const tagFilterElement = document.createElement("li");
-        tagFilterElement.classList.add("tag-filter");
-        const span = document.createElement("span");
+        const tagFilterElement = document.createElement('li');
+        tagFilterElement.classList.add('tag-filter');
+        const span = document.createElement('span');
         span.textContent = tagValue;
         tagFilterElement.appendChild(span);
-        const button = document.createElement("button");
-        button.classList.add("remove-tag");
-        button.textContent = "x";
-        button.addEventListener("click", () => {
-          filters.ustensiles = filters.ustensiles.filter(
-            (ustensile) => ustensile !== tagValue
-          );
+        const button = document.createElement('button');
+        button.classList.add('remove-tag');
+        button.textContent = 'x';
+        button.addEventListener('click', () => {
+          filters.ustensiles = filters.ustensiles.filter(ustensile => ustensile !== tagValue);
           console.log("filters.ustensiles");
           console.log(tagValue);
           console.log(filters.ustensiles);
 
-          updateFiltersResults();
+          updateFiltersResults()
           button.parentElement.remove();
         });
         tagFilterElement.appendChild(button);
         tagsUstensilesContainer.appendChild(tagFilterElement);
-        applyFilters(); //mise à jour currentRecipes
+        applyFilters();//mise à jour currentRecipes
         displayTagsRecipes(currentRecipes);
         applyTagsClickEvent();
       } else {
-        filters.ustensiles = filters.ustensiles.filter(
-          (ustensile) => ustensile !== tagValue
-        );
+        filters.ustensiles = filters.ustensiles.filter(ustensile => ustensile !== tagValue);
       }
     });
   });
@@ -133,19 +118,13 @@ function addTagUstensileClickEvent() {
 
 function applyFilters() {
   // apply filters on appareils and ingredients and ustensiles
-  currentRecipes = initialRecipes.filter((recipe) => {
+  currentRecipes = initialRecipes.filter(recipe => {
     const appareils = recipe.appliance;
-    const ingredients = recipe.ingredients.map(
-      (ingredient) => ingredient.ingredient
-    );
+    const ingredients = recipe.ingredients.map(ingredient => ingredient.ingredient);
     const ustensiles = recipe.ustensils;
-    return (
-      filters.appareils.every((appareil) => appareils.includes(appareil)) &&
-      filters.ingredients.every((ingredient) =>
-        ingredients.includes(ingredient)
-      ) &&
-      filters.ustensiles.every((ustensile) => ustensiles.includes(ustensile))
-    );
+    return filters.appareils.every(appareil => appareils.includes(appareil)) &&
+      filters.ingredients.every(ingredient => ingredients.includes(ingredient)) &&
+      filters.ustensiles.every(ustensile => ustensiles.includes(ustensile));
   });
 }
 
@@ -155,6 +134,7 @@ async function getInitialRecipes() {
   return data;
 }
 
+
 function applyTagsClickEvent() {
   addTagAppareilClickEvent();
   addTagIngredientClickEvent();
@@ -162,14 +142,14 @@ function applyTagsClickEvent() {
 }
 
 function updateFiltersResults() {
-  applyFilters(); //mise à jour currentRecipes
+  applyFilters();//mise à jour currentRecipes
   displayTagsRecipes(currentRecipes);
   applyTagsClickEvent();
 }
 
 async function init() {
   initialRecipes = await getInitialRecipes();
-  currentRecipes = [...initialRecipes]; //clone array values with the spread operator ...
+  currentRecipes = [...initialRecipes];//clone array values with the spread operator ...
   displayTagsRecipes(currentRecipes);
   applyTagsClickEvent();
   //applyFilters();
@@ -195,13 +175,11 @@ inputSearch.addEventListener("input", () => {
     return;
   }
   // 검색어가 포함된 레시피만 필터링
-  currentRecipes = currentRecipes.filter(
-    (recipe) =>
-      recipe.name.toLowerCase().includes(searchValue) ||
-      recipe.description.toLowerCase().includes(searchValue) ||
-      recipe.ingredients.some((ingredient) =>
-        ingredient.ingredient.toLowerCase().includes(searchValue)
-      )
+  currentRecipes = currentRecipes.filter((recipe) =>
+    recipe.name.toLowerCase().includes(searchValue) ||
+    recipe.description.toLowerCase().includes(searchValue) ||
+    recipe.ingredients.some(ingredient =>
+      ingredient.ingredient.toLowerCase().includes(searchValue))
   );
 
   displayTagsRecipes(currentRecipes);
