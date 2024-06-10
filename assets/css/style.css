@@ -99,7 +99,7 @@ main {
   margin-right: 17px;
   width: -moz-fit-content;
   width: fit-content;
-  display: none;
+  //display: none;
 }
 
 #submit {
