@@ -136,8 +136,8 @@ async function getInitialRecipes() {
 
 
 function applyTagsClickEvent() {
-  addTagAppareilClickEvent();
   addTagIngredientClickEvent();
+  addTagAppareilClickEvent();
   addTagUstensileClickEvent();
 }
 
@@ -181,6 +181,5 @@ inputSearch.addEventListener("input", () => {
     recipe.ingredients.some(ingredient =>
       ingredient.ingredient.toLowerCase().includes(searchValue))
   );
-
   displayTagsRecipes(currentRecipes);
 });
