@@ -183,3 +183,22 @@ inputSearch.addEventListener("input", () => {
   );
   displayTagsRecipes(currentRecipes);
 });
+
+//when type in the search input, svg of .hero__search-container .close  is to appear
+const closeSearch = document.querySelector('.hero__search-container .close');
+inputSearch.addEventListener('input', () => {
+  if (inputSearch.value.length > 0) {
+    closeSearch.style.display = 'block';
+  } else {
+    closeSearch.style.display = 'none';
+  }
+});
+
+//when click on the svg of .hero__search-container .close, the input value is to be cleared
+closeSearch.addEventListener('click', () => {
+  inputSearch.value = '';
+  closeSearch.style.display = 'none';
+  currentRecipes = [...initialRecipes];
+  updateFiltersResults();
+});
+
