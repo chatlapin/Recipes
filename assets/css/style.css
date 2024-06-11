@@ -211,6 +211,13 @@ main {
 
 }
 
+.panel ul {
+  list-style-type: none;
+  padding: 0;
+  height: 500px;
+  overflow-y: scroll;
+}
+
 /***************************** card container *****************************/
 .container {
   margin-top: 40px;

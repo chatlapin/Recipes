@@ -202,3 +202,10 @@ closeSearch.addEventListener('click', () => {
   updateFiltersResults();
 });
 
+//until click on the svg of #submit, wait for displaying the search results
+
+
+
+
+
+
