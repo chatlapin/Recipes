@@ -34,80 +34,81 @@
     <div class="hero__search-container">
       <input id="search-input" class="search-input" type="text"
         placeholder="Rechercher une recette, un ingrédient, ...">
-        <div class='close'>
-          <button id="empty">
-              <svg xmlns='http://www.w3.org/2000/svg' width='35' height='35' fill='#7a7a7a' viewBox='0 0 16 16'>
-                  <title>Vider la recherche</title>
-                  <path
-                      d='M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z' />
-              </svg>
-          </button>
+      <div class='close'>
+        <button id="empty">
+          <svg xmlns='http://www.w3.org/2000/svg' width='35' height='35' fill='#7a7a7a' viewBox='0 0 16 16'>
+            <title>Vider la recherche</title>
+            <path
+              d='M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z' />
+          </svg>
+        </button>
       </div>
       <button id="submit">
-          <svg id="searchIcon" xmlns="http://www.w3.org/2000/svg" width="28" height="29" viewBox="0 0 28 29" fill="none">
-              <title>Rechercher</title>
-              <circle cx="10" cy="10.4219" r="9.5" stroke="white" />
-              <line x1="18.3536" y1="19.0683" x2="27.3536" y2="28.0683" stroke="white" />
-          </svg>
+        <svg id="searchIcon" xmlns="http://www.w3.org/2000/svg" width="28" height="29" viewBox="0 0 28 29" fill="none">
+          <title>Rechercher</title>
+          <circle cx="10" cy="10.4219" r="9.5" stroke="white" />
+          <line x1="18.3536" y1="19.0683" x2="27.3536" y2="28.0683" stroke="white" />
+        </svg>
       </button>
-  </div>
-      </input>
+    </div>
+    </input>
     </div>
   </header>
   <main>
     <div class="count">
-    <div class="flex">
-    <button class="accordion">Ingredient <img src="./assets/photos/Vector.jpg" alt="Vector Image"
-        style="margin-left: 5px;"><span class="arrow"></span></button>
-    <div class="panel">
-      <div class="ingredient-search">
-        <input class="ingredient-input" type="text">
-        <button id="empty">
-          <svg xmlns='http://www.w3.org/2000/svg' width='35' height='35' fill='#7a7a7a' viewBox='0 0 16 16'>
-              <title>Vider la recherche</title>
-              <path
-                  d='M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z' />
-          </svg>
-      </button>
-      <button id="submit">
-        <svg id="searchIcon" xmlns="http://www.w3.org/2000/svg" width="28" height="29" viewBox="0 0 28 29" fill="none">
-            <title>Rechercher</title>
-            <circle cx="10" cy="10.4219" r="9.5" stroke="white" />
-            <line x1="18.3536" y1="19.0683" x2="27.3536" y2="28.0683" stroke="white" />
-        </svg>
-    </button>
-      </input>
+      <div class="flex">
+        <div class="ingredients">
+          <button class="accordion">Ingredient <img src="./assets/photos/Vector.jpg" alt="Vector Image"
+              style="margin-left: 5px;"><span class="arrow"></span></button>
+          <div class="panel">
+            <div class="ingredient-search">
+              <input id="ingredient-search" class="ingredient-input" type="text">
+              <button class="empty">
+                x
+              </button>
+              <button class="submit">
+                <svg id="searchIcon" xmlns="http://www.w3.org/2000/svg" width="28" height="29" viewBox="0 0 28 29"
+                  fill="none">
+                  <title>Rechercher</title>
+                  <circle cx="10" cy="10.4219" r="9.5" stroke="white" />
+                  <line x1="18.3536" y1="19.0683" x2="27.3536" y2="28.0683" stroke="white" />
+                </svg>
+              </button>
+              </input>
+            </div>
+            <ul id="panel-ingredients"></ul>
+          </div>
+          <ul id="filters-ingredients"></ul>
+        </div>
+        <div class="appareils">
+          <button class="accordion">Appareil <img src="./assets/photos/Vector.jpg" alt="Vector Image"
+              style="margin-left: 5px;"><span class="arrow"></span></button>
+          <div class="panel">
+            <ul id="panel-appareils"></ul>
+          </div>
+          <ul id="filters-appareils"></ul>
+        </div>
+        <div class="ustensiles">
+          <button class="accordion">Ustensile <img src="./assets/photos/Vector.jpg" alt="Vector Image"
+              style="margin-left: 5px;"><span class="arrow"></span></button>
+          <div class="panel">
+            <ul id="panel-ustensiles"></ul>
+          </div>
+          <ul id="filters-ustensiles"></ul>
+        </div>
+
+
+        <h2 class="counter">
+          <span id="counterResults">0</span> recettes
+        </h2>
       </div>
-      <ul id="panel-ingredients"></ul>
     </div>
-    <ul id="filters-ingredients"></ul>
-    <button class="accordion">Appareil <img src="./assets/photos/Vector.jpg" alt="Vector Image"
-        style="margin-left: 5px;"><span class="arrow"></span></button>
-    <div class="panel">
-      <ul id="panel-appareils"></ul>
-    </div>
-    <ul id="filters-appareils"></ul>
-    <button class="accordion">Ustensile <img src="./assets/photos/Vector.jpg" alt="Vector Image"
-        style="margin-left: 5px;"><span class="arrow"></span></button>
-    <div class="panel">
-      <ul id="panel-ustensiles"></ul>
-    </div>
-    <ul id="filters-ustensiles"></ul>
-   
-
-    <h2 class="counter">
-      <span id="counterResults">0</span> recettes
-    </h2>
-  </div>
-  </div>
     <script>
-      var acc = document.getElementsByClassName("accordion");
-      var i;
-
+      let acc = document.getElementsByClassName("accordion");
       for (i = 0; i < acc.length; i++) {
         acc[i].addEventListener("click", function () {
           this.classList.toggle("active");
-          var panel = this.nextElementSibling;
+          let panel = this.nextElementSibling;
           if (panel.style.display === "block") {
             panel.style.display = "none";
           } else {

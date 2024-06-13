@@ -78,23 +78,26 @@ function displayRecipes(currentRecipes) {
     document.querySelector('#counterResults').innerHTML = currentRecipes.length;
 }
 
-//display tags
-function displayTags(currentRecipes) {
-    const tagsAppareilsContainer = document.querySelector('#panel-appareils');
-    tagsAppareilsContainer.innerHTML = '';
+function getAppareilsTags(currentRecipes) {
     let tagsAppareils = [];
     currentRecipes.forEach(recipe => {
         tagsAppareils.push(recipe.appliance);
     });
     tagsAppareils = [...new Set(tagsAppareils)];//supprimer les doublons, Set est un objet qui permet de stocker des valeurs uniques
-    tagsAppareils.forEach(tag => {
+    return tagsAppareils;
+}
+
+function displayAppareilsTags(appareilTags) {
+    const tagsAppareilsContainer = document.querySelector('#panel-appareils');
+    tagsAppareilsContainer.innerHTML = '';
+    appareilTags.forEach(tag => {
         tagsAppareilsContainer.innerHTML += `
         <li class="tag tag-appareil" data-valeur="${tag}">${capitalize(tag)}</li>
         `;
     });
+}
 
-    const tagsIngredientsContainer = document.querySelector('#panel-ingredients');
-    tagsIngredientsContainer.innerHTML = '';
+function getIngredientsTags(currentRecipes) {
     let tagsIngredients = [];
     currentRecipes.forEach(recipe => {
         recipe.ingredients.forEach(ingredient => {
@@ -102,12 +105,22 @@ function displayTags(currentRecipes) {
         });
     });
     tagsIngredients = [...new Set(tagsIngredients)];//supprimer les doublons, Set est un objet qui permet de stocker des valeurs uniques
+    return tagsIngredients;
+}
+function displayIngredientsTags(tagsIngredients) {
+    const tagsIngredientsContainer = document.querySelector('#panel-ingredients');
+    tagsIngredientsContainer.innerHTML = '';
     tagsIngredients.forEach(tag => {
         tagsIngredientsContainer.innerHTML += `
         <li class="tag tag-ingredient" data-valeur="${tag}">${capitalize(tag)}</li>
         `;
     });
+}
 
+
+
+//display tags
+function displayTags(currentRecipes) {
     const tagsUstensilesContainer = document.querySelector('#panel-ustensiles');
     tagsUstensilesContainer.innerHTML = '';
     let tagsUstensiles = [];
@@ -130,5 +143,5 @@ function displayTagsRecipes(currentRecipes) {
     displayTags(currentRecipes);
 }
 
-export { displayTagsRecipes };
+export { displayAppareilsTags, displayIngredientsTags, displayTagsRecipes, getAppareilsTags, getIngredientsTags };
 

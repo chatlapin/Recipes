@@ -1,4 +1,9 @@
-import { displayTagsRecipes } from "./displays.js";
+import {
+  displayAppareilsTags,
+  displayIngredientsTags,
+  displayTagsRecipes, getAppareilsTags,
+  getIngredientsTags
+} from "./displays.js";
 
 let initialRecipes = [];
 let currentRecipes = [];//global scope variable
@@ -8,6 +13,9 @@ let filters = {//global scope variable
   ustensiles: [],
 };
 
+let initialAppareilsTags = [];
+let initialIngredientsTags = [];
+
 function addTagIngredientClickEvent() {
   const tagsIngredients = document.querySelectorAll('.tag.tag-ingredient');
   const tagsIngredientsContainer = document.querySelector('#filters-ingredients');
@@ -15,6 +23,7 @@ function addTagIngredientClickEvent() {
     tag.addEventListener('click', () => {
       const tagValue = tag.dataset.valeur;
       console.log(tagValue);
+      console.log(filters.ingredients.includes(tagValue));
       if (!filters.ingredients.includes(tagValue)) {
         filters.ingredients.push(tagValue);
         const tagFilterElement = document.createElement('li');
@@ -32,12 +41,15 @@ function addTagIngredientClickEvent() {
         });
         tagFilterElement.appendChild(button);
         tagsIngredientsContainer.appendChild(tagFilterElement);
+
         applyFilters();
         displayTagsRecipes(currentRecipes);
         applyTagsClickEvent();
-      } else {
+      }/* else {
         filters.ingredients = filters.ingredients.filter(ingredient => ingredient !== tagValue);
-      }
+      }*/
+      const parentAccordion = tag.closest('.panel');
+      parentAccordion.style.display = 'none';
     });
   });
 }
@@ -67,13 +79,16 @@ function addTagAppareilClickEvent() {
         });
         tagFilterElement.appendChild(button);
         tagsAppareilsContainer.appendChild(tagFilterElement);
+
         applyFilters();//mise à jour currentRecipes
         displayTagsRecipes(currentRecipes);
         applyTagsClickEvent();
         //tagsAppareilsContainer.innerHTML += `<li class="tag-filter"><span>${tagValue}</span> <button class="remove-tag">x</button> </li> `;
-      } else {
+      } /*else {
         filters.appareils = filters.appareils.filter(appareil => appareil !== tagValue);
-      }
+      }*/
+      const parentAccordion = tag.closest('.panel');
+      parentAccordion.style.display = 'none';
     });
   });
 }
@@ -84,7 +99,6 @@ function addTagUstensileClickEvent() {
   tagsUstensiles.forEach(tag => {
     tag.addEventListener('click', () => {
       const tagValue = tag.dataset.valeur;
-      console.log(tagValue);
       if (!filters.ustensiles.includes(tagValue)) {
         filters.ustensiles.push(tagValue);
         const tagFilterElement = document.createElement('li');
@@ -109,9 +123,11 @@ function addTagUstensileClickEvent() {
         applyFilters();//mise à jour currentRecipes
         displayTagsRecipes(currentRecipes);
         applyTagsClickEvent();
-      } else {
+      } /*else {
         filters.ustensiles = filters.ustensiles.filter(ustensile => ustensile !== tagValue);
-      }
+      }*/
+      const parentAccordion = tag.closest('.panel');
+      parentAccordion.style.display = 'none';
     });
   });
 }
@@ -147,12 +163,23 @@ function updateFiltersResults() {
   applyTagsClickEvent();
 }
 
+const ingredientSearch = document.getElementById("ingredient-search");
+ingredientSearch.addEventListener("input", () => {
+  const searchValue = ingredientSearch.value.toLowerCase().trim();
+  let currentIngredientsTags = initialIngredientsTags.filter(tag => tag.toLowerCase().includes(searchValue));
+  displayIngredientsTags(currentIngredientsTags);
+  addTagIngredientClickEvent();
+});
+
 async function init() {
   initialRecipes = await getInitialRecipes();
   currentRecipes = [...initialRecipes];//clone array values with the spread operator ...
   displayTagsRecipes(currentRecipes);
+  initialAppareilsTags = getAppareilsTags(initialRecipes);
+  displayAppareilsTags(initialAppareilsTags);
+  initialIngredientsTags = getIngredientsTags(initialRecipes);
+  displayIngredientsTags(initialIngredientsTags);
   applyTagsClickEvent();
-  //applyFilters();
 }
 init();
 /*
