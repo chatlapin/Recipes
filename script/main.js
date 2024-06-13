@@ -229,8 +229,14 @@ closeSearch.addEventListener('click', () => {
   updateFiltersResults();
 });
 
-//until click on the svg of #submit, wait for displaying the search results
-
+//when click on the button .empty-ingredient, the input value is to be cleared. Then, display all the ingredients as a list
+const emptyIngredient = document.querySelector('.empty-ingredient');
+emptyIngredient.addEventListener('click', () => {
+  ingredientSearch.value = '';
+  const currentIngredientsTags = initialIngredientsTags;
+  displayIngredientsTags(currentIngredientsTags);
+  addTagIngredientClickEvent();
+});
 
 
 
