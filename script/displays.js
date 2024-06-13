@@ -5,7 +5,7 @@ function displayRecipes(currentRecipes) {
     // 컨테이너
     container.innerHTML = "";
     // recipesData 배열의 각 요소별 루프 처리
-    currentRecipes.forEach((recipeData) => {
+/* currentRecipes.forEach((recipeData) => {
         // 각 요소 데이터를 쓰기
         container.innerHTML += `
         <div class="card">
@@ -37,6 +37,43 @@ function displayRecipes(currentRecipes) {
           </div>
     `;
     });
+    */
+
+    for (let i = 0; i < currentRecipes.length; i++) {
+        const recipeData = currentRecipes[i];
+      
+        // Create the card structure as a string
+        let cardHTML = `
+          <div class="card">
+            <div class="user-wrap">
+              <div class="user-image">
+                <img src="assets/photos/${recipeData.image}" alt="${recipeData.name}">
+              </div>
+              <div class="user-text">
+                ${recipeData.time} min
+              </div>
+            </div>
+            <div class="card-content">
+              <h2>${recipeData.name}</h2>
+              <h3>RECETTE</h3>
+              <p>${recipeData.description}</p>
+              <h3>INGRÉDIENTS</h3>
+              <ul>`;
+      
+        // Loop through ingredients and build list items
+        for (let j = 0; j < recipeData.ingredients.length; j++) {
+          const ingredient = recipeData.ingredients[j];
+          const ingredientItem = `
+            <li>${ingredient.ingredient} : ${ingredient.quantity ? ingredient.quantity + " " + (ingredient.unit || "") : ""}</li>`;
+          cardHTML += ingredientItem;
+        }
+      
+        cardHTML += `</ul></div></div>`;
+      
+        // Set the container's innerHTML with the complete card structure
+        container.innerHTML += cardHTML;
+      }
+      
 
     document.querySelector('#counterResults').innerHTML = currentRecipes.length;
 }
