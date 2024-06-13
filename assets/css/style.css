@@ -197,12 +197,12 @@ main {
   padding: 17px, 16px, 17px, 16px;
   border-radius: 11px;
   position: relative;
-  /* Needed for arrow positioning */
+  text-align: left;
 }
 
 .active,
 .accordion:hover {
-  background-color: #ccc;
+  background-color: white;
 }
 
 .panel {
@@ -212,7 +212,7 @@ main {
   overflow: hidden;
   position: absolute;
   top: 56px;
-  left: 0;
+  left: 7px;
   z-index: 1;
   width: 195px;
 }
@@ -230,18 +230,32 @@ main {
   position: relative;
 }
 
-.panel .empty {
+.panel .empty-ingredient {
   width: 15px;
   height: 15px;
   background-color: transparent;
   border: none;
   position: absolute;
-  right: 45px;
+  right: 35px;
   top: 0px;
+}
+
+.panel .submit-ingredient{
+  width: 15px;
+  height: 15px;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 19px;
+  top: 5px;
 }
 
 .ingredient-search {
   position: relative;
+  margin-left: 20px;
+  top:25px;
+  height:36px;
+  border-color:  #C6C6C6;
 }
 
 
