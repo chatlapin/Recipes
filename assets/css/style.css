@@ -259,6 +259,62 @@ main {
 }
 
 
+.panel .empty-appareil {
+  width: 15px;
+  height: 15px;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 35px;
+  top: 0px;
+}
+
+.panel .submit-appareil{
+  width: 15px;
+  height: 15px;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 19px;
+  top: 5px;
+}
+
+.appareil-search {
+  position: relative;
+  margin-left: 20px;
+  top:25px;
+  height:36px;
+  border-color:  #C6C6C6;
+}
+
+.panel .empty-ustensile {
+  width: 15px;
+  height: 15px;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 35px;
+  top: 0px;
+}
+
+.panel .submit-ustensile{
+  width: 15px;
+  height: 15px;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 19px;
+  top: 5px;
+}
+
+.ustensile-search {
+  position: relative;
+  margin-left: 20px;
+  top:25px;
+  height:36px;
+  border-color:  #C6C6C6;
+}
+
 
 /***************************** card container *****************************/
 .container {
