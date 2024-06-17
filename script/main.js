@@ -1,8 +1,9 @@
 import {
-  displayAppareilsTags,
+  getIngredientsTags,
   displayIngredientsTags,
-  displayTagsRecipes, getAppareilsTags,
-  getIngredientsTags
+  getAppareilsTags,
+  displayAppareilsTags,
+  displayTagsRecipes,
 } from "./displays.js";
 
 let initialRecipes = [];
@@ -55,7 +56,7 @@ function addTagIngredientClickEvent() {
 }
 
 function addTagAppareilClickEvent() {
-  const tagsAppareils = document.querySelectorAll('.tag-appareil');
+  const tagsAppareils = document.querySelectorAll('.tag.tag-appareil');
   const tagsAppareilsContainer = document.querySelector('#filters-appareils');
   tagsAppareils.forEach(tag => {
     tag.addEventListener('click', () => {
@@ -163,6 +164,7 @@ function updateFiltersResults() {
   applyTagsClickEvent();
 }
 
+// For ingredient search
 const ingredientSearch = document.getElementById("ingredient-search");
 ingredientSearch.addEventListener("input", () => {
   const searchValue = ingredientSearch.value.toLowerCase().trim();
@@ -171,17 +173,48 @@ ingredientSearch.addEventListener("input", () => {
   addTagIngredientClickEvent();
 });
 
+// For appareil search
+const appareilSearch = document.getElementById("appareil-search");
+appareilSearch.addEventListener("input", () => {
+  const searchValue = appareilSearch.value.toLowerCase().trim();
+  let currentAppareilsTags = initialAppareilsTags.filter(tag => tag.toLowerCase().includes(searchValue));
+  displayAppareilsTags(currentAppareilsTags);
+  addTagAppareilClickEvent();
+});
+
+// For ustensile search
+const ustensileSearch = document.getElementById("ustensile-search");
+ustensileSearch.addEventListener("input", () => {
+  const searchValue = ustensileSearch.value.toLowerCase().trim();
+  let currentUstensilesTags = initialUstensilesTags.filter(tag => tag.toLowerCase().includes(searchValue));
+  displayUstensilesTags(currentUstensilesTags);
+  addTagUstensileClickEvent();
+});
+
 async function init() {
   initialRecipes = await getInitialRecipes();
-  currentRecipes = [...initialRecipes];//clone array values with the spread operator ...
+  currentRecipes = [...initialRecipes]; // Clone array values with the spread operator ...
   displayTagsRecipes(currentRecipes);
+
+  // Initialize and display tags for appareils
   initialAppareilsTags = getAppareilsTags(initialRecipes);
   displayAppareilsTags(initialAppareilsTags);
+
+  // Initialize and display tags for ingredients
   initialIngredientsTags = getIngredientsTags(initialRecipes);
   displayIngredientsTags(initialIngredientsTags);
+
+  // Initialize and display tags for ustensiles
+  initialUstensilesTags = getUstensilesTags(initialRecipes);
+  displayUstensilesTags(initialUstensilesTags);
+
   applyTagsClickEvent();
 }
 init();
+
+
+
+
 /*
 // Fetch data from JSON file
 fetch("assets/data/recipes.json")
@@ -229,13 +262,31 @@ closeSearch.addEventListener('click', () => {
   updateFiltersResults();
 });
 
-//when click on the button .empty-ingredient, the input value is to be cleared. Then, display all the ingredients as a list
+// Clearing ingredient search and displaying all ingredients
 const emptyIngredient = document.querySelector('.empty-ingredient');
 emptyIngredient.addEventListener('click', () => {
   ingredientSearch.value = '';
   const currentIngredientsTags = initialIngredientsTags;
   displayIngredientsTags(currentIngredientsTags);
   addTagIngredientClickEvent();
+});
+
+// Clearing appareil search and displaying all appareils
+const emptyAppareil = document.querySelector('.empty-appareil');
+emptyAppareil.addEventListener('click', () => {
+  appareilSearch.value = '';
+  const currentAppareilsTags = initialAppareilsTags;
+  displayAppareilsTags(currentAppareilsTags);
+  addTagAppareilClickEvent();
+});
+
+// Clearing ustensile search and displaying all ustensiles
+const emptyUstensile = document.querySelector('.empty-ustensile');
+emptyUstensile.addEventListener('click', () => {
+  ustensileSearch.value = '';
+  const currentUstensilesTags = initialUstensilesTags;
+  displayUstensilesTags(currentUstensilesTags);
+  addTagUstensileClickEvent();
 });
 
 
