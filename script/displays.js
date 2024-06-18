@@ -107,4 +107,3 @@ function displayTagsRecipes(currentRecipes) {
 }
 
 export { displayAppareilsTags, displayIngredientsTags, displayTagsRecipes, getAppareilsTags, getIngredientsTags };
-

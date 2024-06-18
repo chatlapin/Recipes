@@ -288,8 +288,3 @@ emptyUstensile.addEventListener('click', () => {
   displayUstensilesTags(currentUstensilesTags);
   addTagUstensileClickEvent();
 });
-
-
-
-
-
