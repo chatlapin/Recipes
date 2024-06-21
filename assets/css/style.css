@@ -21,14 +21,14 @@ main {
   font-weight: 400;
 }
 
-.counter{
+.counter {
   font: 21px "Anton", sans-serif;
 }
 
-#counterResults{
+#counterResults {
   font: 21px "Anton", sans-serif;
   font-weight: 700;
-  
+
 }
 
 /* title font family  */
@@ -68,7 +68,7 @@ main {
   width: fit-content;
 }
 
-#ellipse{
+#ellipse {
   border-radius: 10px;
   margin-left: 12px;
 }
@@ -128,6 +128,7 @@ main {
 #submit:hover::after {
   opacity: 1;
 }
+
 #submit:hover circle,
 #submit:hover line {
   stroke: #1b1b1b;
@@ -138,7 +139,7 @@ main {
   margin-right: 17px;
   width: -moz-fit-content;
   width: fit-content;
-  //display: none;
+  /*display: none;*/
 }
 
 #submit {
@@ -168,13 +169,14 @@ main {
 #submit:hover::after {
   opacity: 1;
 }
+
 #submit:hover circle,
 #submit:hover line {
   stroke: #1b1b1b;
 }
 
 /***************************** filter button *****************************/
-.flex{
+.flex {
   display: flex;
   justify-content: space-between;
   width: 95%;
@@ -195,12 +197,12 @@ main {
   padding: 17px, 16px, 17px, 16px;
   border-radius: 11px;
   position: relative;
-  /* Needed for arrow positioning */
+  text-align: left;
 }
 
 .active,
 .accordion:hover {
-  background-color: #ccc;
+  background-color: white;
 }
 
 .panel {
@@ -208,7 +210,11 @@ main {
   display: none;
   background-color: white;
   overflow: hidden;
-
+  position: absolute;
+  top: 56px;
+  left: 7px;
+  z-index: 1;
+  width: 195px;
 }
 
 .panel ul {
@@ -217,6 +223,98 @@ main {
   height: 500px;
   overflow-y: scroll;
 }
+
+.ingredients,
+.appareils,
+.ustensiles {
+  position: relative;
+}
+
+.panel .empty-ingredient {
+  width: 15px;
+  height: 15px;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 35px;
+  top: 0px;
+}
+
+.panel .submit-ingredient {
+  width: 15px;
+  height: 15px;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 19px;
+  top: 5px;
+}
+
+.ingredient-search {
+  position: relative;
+  margin-left: 20px;
+  top: 25px;
+  height: 36px;
+  border-color: #C6C6C6;
+}
+
+
+.panel .empty-appareil {
+  width: 15px;
+  height: 15px;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 35px;
+  top: 0px;
+}
+
+.panel .submit-appareil {
+  width: 15px;
+  height: 15px;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 19px;
+  top: 5px;
+}
+
+.appareil-search {
+  position: relative;
+  margin-left: 20px;
+  top: 25px;
+  height: 36px;
+  border-color: #C6C6C6;
+}
+
+.panel .empty-ustensile {
+  width: 15px;
+  height: 15px;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 35px;
+  top: 0px;
+}
+
+.panel .submit-ustensile {
+  width: 15px;
+  height: 15px;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 19px;
+  top: 5px;
+}
+
+.ustensile-search {
+  position: relative;
+  margin-left: 20px;
+  top: 25px;
+  height: 36px;
+  border-color: #C6C6C6;
+}
+
 
 /***************************** card container *****************************/
 .container {
@@ -245,15 +343,17 @@ main {
 }
 
 .user-wrap {
-	width: 100%;
-	position: relative;
-	img {
-		width: 100%;
-		vertical-align: middle;
-	}
+  width: 100%;
+  position: relative;
+
+  img {
+    width: 100%;
+    vertical-align: middle;
+  }
 }
+
 .user-text {
-  background-color:#ffd15b;
+  background-color: #ffd15b;
   border-radius: 14px;
   padding: 5px 15px;
   position: absolute;
@@ -262,7 +362,7 @@ main {
 }
 
 .card-content {
-	padding: 20px;
+  padding: 20px;
 }
 
 .card h2 {
@@ -327,4 +427,41 @@ main {
   cursor: pointer;
   background-color: black;
   color: #ffd15b;
+}
+
+#empty {
+  width: 40px;
+  height: 50px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#empty:hover {
+  background-color: #dadada;
+}
+
+.panel {
+  padding-block: 15px;
+  display: block;
+  height: 0;
+  transition: height 0.3s ease-in-out;
+}
+
+.active .panel {
+  display: block;
+  height: 355px;
+}
+
+.vector {
+  transition: transform 0.3s;
+}
+
+.active .vector {
+  transform: rotate(180deg);
+}
+
+#panel-ingredients {
+  height: 270px;
 }

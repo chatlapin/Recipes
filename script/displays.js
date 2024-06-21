@@ -41,44 +41,71 @@ function displayRecipes(currentRecipes) {
     document.querySelector('#counterResults').innerHTML = currentRecipes.length;
 }
 
-//display tags
-function displayTags(currentRecipes) {
-    const tagsAppareilsContainer = document.querySelector('#panel-appareils');
-    tagsAppareilsContainer.innerHTML = '';
+function getAppareilsTags(currentRecipes) {
     let tagsAppareils = [];
     currentRecipes.forEach(recipe => {
-        tagsAppareils.push(recipe.appliance);
+        tagsAppareils.push(recipe.appliance.toLowerCase());
     });
     tagsAppareils = [...new Set(tagsAppareils)];//supprimer les doublons, Set est un objet qui permet de stocker des valeurs uniques
-    tagsAppareils.forEach(tag => {
+    //sort tagsAppareils alphabetically
+    tagsAppareils = tagsAppareils.sort((a, b) => a.localeCompare(b));
+    return tagsAppareils;
+}
+
+function displayAppareilsTags(appareilTags) {
+    const tagsAppareilsContainer = document.querySelector('#panel-appareils');
+    tagsAppareilsContainer.innerHTML = '';
+    appareilTags.forEach(tag => {
         tagsAppareilsContainer.innerHTML += `
         <li class="tag tag-appareil" data-valeur="${tag}">${capitalize(tag)}</li>
         `;
     });
+}
 
-    const tagsIngredientsContainer = document.querySelector('#panel-ingredients');
-    tagsIngredientsContainer.innerHTML = '';
+function getIngredientsTags(currentRecipes) {
     let tagsIngredients = [];
     currentRecipes.forEach(recipe => {
         recipe.ingredients.forEach(ingredient => {
-            tagsIngredients.push(ingredient.ingredient);
+            tagsIngredients.push(ingredient.ingredient.toLowerCase());
         });
     });
     tagsIngredients = [...new Set(tagsIngredients)];//supprimer les doublons, Set est un objet qui permet de stocker des valeurs uniques
+    tagsIngredients = tagsIngredients.sort((a, b) => a.localeCompare(b));
+    return tagsIngredients;
+}
+
+function displayIngredientsTags(tagsIngredients) {
+    const tagsIngredientsContainer = document.querySelector('#panel-ingredients');
+    tagsIngredientsContainer.innerHTML = '';
     tagsIngredients.forEach(tag => {
         tagsIngredientsContainer.innerHTML += `
         <li class="tag tag-ingredient" data-valeur="${tag}">${capitalize(tag)}</li>
         `;
     });
+}
 
-    const tagsUstensilesContainer = document.querySelector('#panel-ustensiles');
-    tagsUstensilesContainer.innerHTML = '';
+function getUstensilesTags(currentRecipes) {
     let tagsUstensiles = [];
     currentRecipes.forEach(recipe => {
         recipe.ustensils.forEach(ustensile => {
-            tagsUstensiles.push(ustensile);
+            tagsUstensiles.push(ustensile.toLowerCase());
         });
     });
+    tagsUstensiles = [...new Set(tagsUstensiles)];//supprimer les doublons, Set est un objet qui permet de stocker des valeurs uniques
+    tagsUstensiles = tagsUstensiles.sort((a, b) => a.localeCompare(b));
+    return tagsUstensiles;
+}
+
+//display tags
+function displayUstensilesTags(ustensiles) {
+    const tagsUstensilesContainer = document.querySelector('#panel-ustensiles');
+    tagsUstensilesContainer.innerHTML = '';
+    let tagsUstensiles = [];
+
+    ustensiles.forEach(ustensile => {
+        tagsUstensiles.push(ustensile);
+    });
+
     tagsUstensiles = [...new Set(tagsUstensiles)];
     tagsUstensiles.forEach(tag => {
         tagsUstensilesContainer.innerHTML += `
@@ -87,11 +114,16 @@ function displayTags(currentRecipes) {
     })
 
 }
-
+/*
 function displayTagsRecipes(currentRecipes) {
     displayRecipes(currentRecipes);
     displayTags(currentRecipes);
-}
+}*/
 
-export { displayTagsRecipes };
+export {
+    displayAppareilsTags, displayIngredientsTags,
+    displayRecipes, displayUstensilesTags,
+    getAppareilsTags, getIngredientsTags,
+    getUstensilesTags
+};
 
