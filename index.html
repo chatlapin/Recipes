@@ -1,207 +1,137 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <!-- encoding definition -->
-    <meta charset="utf-8">
-    <!-- mobile optimization -->
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <!-- compatible edge -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- css -->
-    <link href="./assets/css/style.css" rel="stylesheet">
-    <!-- Preload the LCP image with a high fetchpriority so it starts loading with the stylesheet. -->
-    <link
-      rel="preload"
-      fetchpriority="high"
-      as="image"
-      href="assets/photos/lampos-aritonang-24gR_9lCdes-unsplash-1.webp">
-    <title>Les petits plats</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/font-awesome.min.css">
-  </head>
 
-  <body>
-    <!-- ************************* HERO HEADER ************************* -->
-    <header class="hero">
-      <!-- logo -->
-      <div class="hero__logo">
-        <img src="./assets/data/logo/logo.png" alt="Logo Les petits plats">
-        <img
-        id="ellipse"
-        src="./assets/photos/Ellipse.jpg"
-        alt="Ellipse Les petits plats"
-        class="rounded-full w-0.2 h-2 shadow-md"
-      />
-      </div>
-      <!-- title -->
-      <h1 class="hero__title" id="hero-title">
-        Cherchez parmi plus de 1500 recettes du quotidien, simples et
-        délicieuses
-      </h1>
-      <!-- search bar -->
-      <div class="hero__search-container">
-        <input
-          id="search-input"
-          class="search-input"
-          type="text"
-          placeholder="Rechercher une recette, un ingrédient, ..."
-        >
-        <div class="close">
-          <button id="empty">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="35"
-              height="35"
-              fill="#7a7a7a"
-              viewBox="0 0 16 16"
-            >
-              <title>Vider la recherche</title>
-              <path
-                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
-              />
-            </svg>
-          </button>
-        </div>
-        <button id="submit">
-          <svg
-            id="searchIcon"
-            xmlns="http://www.w3.org/2000/svg"
-            width="28"
-            height="29"
-            viewBox="0 0 28 29"
-            fill="none"
-          >
-            <title>Rechercher</title>
-            <circle cx="10" cy="10.4219" r="9.5" stroke="white" />
-            <line
-              x1="18.3536"
-              y1="19.0683"
-              x2="27.3536"
-              y2="28.0683"
-              stroke="white"
-            />
+<head>
+  <!-- encoding definition -->
+  <meta charset="utf-8">
+  <!-- mobile optimization -->
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <!-- compatible edge -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- css -->
+  <link href="./assets/css/style.css" rel="stylesheet">
+  <!-- Preload the LCP image with a high fetchpriority so it starts loading with the stylesheet. -->
+  <link rel="preload" fetchpriority="high" as="image" href="assets/photos/lampos-aritonang-24gR_9lCdes-unsplash-1.webp">
+  <title>Les petits plats</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/font-awesome.min.css">
+</head>
+
+<body>
+  <!-- ************************* HERO HEADER ************************* -->
+  <header class="hero">
+    <!-- logo -->
+    <div class="hero__logo">
+      <img src="./assets/data/logo/logo.png" alt="Logo Les petits plats">
+      <img id="ellipse" src="./assets/photos/Ellipse.jpg" alt="Ellipse Les petits plats"
+        class="rounded-full w-0.2 h-2 shadow-md" />
+    </div>
+    <!-- title -->
+    <h1 class="hero__title" id="hero-title">
+      Cherchez parmi plus de 1500 recettes du quotidien, simples et
+      délicieuses
+    </h1>
+    <!-- search bar -->
+    <div class="hero__search-container">
+      <input id="search-input" class="search-input" type="text"
+        placeholder="Rechercher une recette, un ingrédient, ...">
+      <div class="close">
+        <button id="empty">
+          <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#7a7a7a" viewBox="0 0 16 16">
+            <title>Vider la recherche</title>
+            <path
+              d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
           </svg>
         </button>
       </div>
-    </header>
-    <main>
-      <div class="count">
-        <div class="flex">
-          <div class="ingredients">
-            <button class="accordion">
-              Ingredient
-              <img
-                class="vector"
-                src="./assets/photos/Vector.jpg"
-                style="margin-right: 0px"
-                alt="Vector Image"
-              ><span class="arrow"></span>
-            </button>
-            <div class="panel">
-              <div class="ingredient-search">
-                <input
-                  id="ingredient-search"
-                  class="ingredient-input"
-                  type="text"
-                >
-                <button class="empty-ingredient">x</button>
-                <button>
-                  <img
-                    class="submit-ingredient"
-                    src="./assets/photos/search.jpg
-                "
-                    alt=""
-                  >
-                </button>
-              </div>
-              <ul id="panel-ingredients"></ul>
+      <button id="submit">
+        <svg id="searchIcon" xmlns="http://www.w3.org/2000/svg" width="28" height="29" viewBox="0 0 28 29" fill="none">
+          <title>Rechercher</title>
+          <circle cx="10" cy="10.4219" r="9.5" stroke="white" />
+          <line x1="18.3536" y1="19.0683" x2="27.3536" y2="28.0683" stroke="white" />
+        </svg>
+      </button>
+    </div>
+  </header>
+  <main>
+    <div class="count">
+      <div class="flex">
+        <div class="ingredients">
+          <button class="accordion">
+            Ingredient
+            <img class="vector" src="./assets/photos/Vector.jpg" style="margin-right: 0px" alt="Vector Image"><span
+              class="arrow"></span>
+          </button>
+          <div class="panel">
+            <div class="ingredient-search">
+              <input id="ingredient-search" class="ingredient-input" type="text">
+              <button class="empty-ingredient">x</button>
+              <button>
+                <img class="submit-ingredient" src="./assets/photos/search.jpg
+                " alt="">
+              </button>
             </div>
-            <ul id="filters-ingredients"></ul>
+            <ul id="panel-ingredients"></ul>
           </div>
-          <div class="appareils">
-            <button class="accordion">
-              appareil
-              <img
-                class="vector"
-                src="./assets/photos/Vector.jpg"
-                style="margin-right: 0px"
-                alt="Vector Image"
-              ><span class="arrow"></span>
-            </button>
-            <div class="panel">
-              <div class="appareil-search">
-                <input
-                  id="appareil-search"
-                  class="appareil-input"
-                  type="text"
-                >
-                <button class="empty-appareil">x</button>
-                <button>
-                  <img
-                    class="submit-appareil"
-                    src="./assets/photos/search.jpg
-                "
-                    alt=""
-                  >
-                </button>
-              </div>
-              <ul id="panel-appareils"></ul>
-            </div>
-            <ul id="filters-appareils"></ul>
-          </div>
-          <div class="ustensiles">
-            <button class="accordion">
-              ustensile
-              <img
-                class="vector"
-                src="./assets/photos/Vector.jpg"
-                style="margin-right: 0px"
-                alt="Vector Image"
-              ><span class="arrow"></span>
-            </button>
-            <div class="panel">
-              <div class="ustensile-search">
-                <input
-                  id="ustensile-search"
-                  class="ustensile-input"
-                  type="text"
-                >
-                <button class="empty-ustensile">x</button>
-                <button>
-                  <img
-                    class="submit-ustensile"
-                    src="./assets/photos/search.jpg
-                  "
-                    alt=""
-                  >
-                </button>
-              </div>
-              <ul id="panel-ustensiles"></ul>
-            </div>
-            <ul id="filters-ustensiles"></ul>
-          </div>
-
-          <h2 class="counter"><span id="counterResults">0</span> recettes</h2>
+          <ul id="filters-ingredients"></ul>
         </div>
+        <div class="appareils">
+          <button class="accordion">
+            appareil
+            <img class="vector" src="./assets/photos/Vector.jpg" style="margin-right: 0px" alt="Vector Image"><span
+              class="arrow"></span>
+          </button>
+          <div class="panel">
+            <div class="appareil-search">
+              <input id="appareil-search" class="appareil-input" type="text">
+              <button class="empty-appareil">x</button>
+              <button>
+                <img class="submit-appareil" src="./assets/photos/search.jpg
+                " alt="">
+              </button>
+            </div>
+            <ul id="panel-appareils"></ul>
+          </div>
+          <ul id="filters-appareils"></ul>
+        </div>
+        <div class="ustensiles">
+          <button class="accordion">
+            ustensile
+            <img class="vector" src="./assets/photos/Vector.jpg" style="margin-right: 0px" alt="Vector Image"><span
+              class="arrow"></span>
+          </button>
+          <div class="panel">
+            <div class="ustensile-search">
+              <input id="ustensile-search" class="ustensile-input" type="text">
+              <button class="empty-ustensile">x</button>
+              <img class="submit-ustensile" src="./assets/photos/search.jpg
+                  " alt="">
+            </div>
+            <ul id="panel-ustensiles"></ul>
+          </div>
+          <ul id="filters-ustensiles"></ul>
+        </div>
+
+        <h2 class="counter"><span id="counterResults">0</span> recettes</h2>
       </div>
-      <script>
-        let acc = document.getElementsByClassName("accordion");
-        for (i = 0; i < acc.length; i++) {
-          acc[i].addEventListener("click", function () {
-            this.classList.toggle("active");
-            let panel = this.nextElementSibling;
-            if (panel.style.display === "block") {
-              panel.style.display = "none";
-            } else {
-              panel.style.display = "block";
-            }
-          });
-        }
-      </script>
-      <!-- ************************* RECIPES CARDS ************************* -->
-      <div class="container"></div>
-    </main>
-    <script type="module" src="./script/main.js"></script>
-  </body>
+    </div>
+    <script>
+      let acc = document.getElementsByClassName("accordion");
+      for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+          this.parentElement.classList.toggle("active");
+          /*let panel = this.nextElementSibling;
+          if (panel.style.display === "block") {
+            panel.style.display = "none";
+          } else {
+            panel.style.display = "block";
+          }*/
+        });
+      }
+    </script>
+    <!-- ************************* RECIPES CARDS ************************* -->
+    <div class="container"></div>
+  </main>
+  <script type="module" src="./script/main.js"></script>
+</body>
+
 </html>

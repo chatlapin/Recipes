@@ -44,9 +44,11 @@ function displayRecipes(currentRecipes) {
 function getAppareilsTags(currentRecipes) {
     let tagsAppareils = [];
     currentRecipes.forEach(recipe => {
-        tagsAppareils.push(recipe.appliance);
+        tagsAppareils.push(recipe.appliance.toLowerCase());
     });
     tagsAppareils = [...new Set(tagsAppareils)];//supprimer les doublons, Set est un objet qui permet de stocker des valeurs uniques
+    //sort tagsAppareils alphabetically
+    tagsAppareils = tagsAppareils.sort((a, b) => a.localeCompare(b));
     return tagsAppareils;
 }
 
@@ -64,12 +66,14 @@ function getIngredientsTags(currentRecipes) {
     let tagsIngredients = [];
     currentRecipes.forEach(recipe => {
         recipe.ingredients.forEach(ingredient => {
-            tagsIngredients.push(ingredient.ingredient);
+            tagsIngredients.push(ingredient.ingredient.toLowerCase());
         });
     });
     tagsIngredients = [...new Set(tagsIngredients)];//supprimer les doublons, Set est un objet qui permet de stocker des valeurs uniques
+    tagsIngredients = tagsIngredients.sort((a, b) => a.localeCompare(b));
     return tagsIngredients;
 }
+
 function displayIngredientsTags(tagsIngredients) {
     const tagsIngredientsContainer = document.querySelector('#panel-ingredients');
     tagsIngredientsContainer.innerHTML = '';
@@ -80,18 +84,28 @@ function displayIngredientsTags(tagsIngredients) {
     });
 }
 
-
-
-//display tags
-function displayTags(currentRecipes) {
-    const tagsUstensilesContainer = document.querySelector('#panel-ustensiles');
-    tagsUstensilesContainer.innerHTML = '';
+function getUstensilesTags(currentRecipes) {
     let tagsUstensiles = [];
     currentRecipes.forEach(recipe => {
         recipe.ustensils.forEach(ustensile => {
-            tagsUstensiles.push(ustensile);
+            tagsUstensiles.push(ustensile.toLowerCase());
         });
     });
+    tagsUstensiles = [...new Set(tagsUstensiles)];//supprimer les doublons, Set est un objet qui permet de stocker des valeurs uniques
+    tagsUstensiles = tagsUstensiles.sort((a, b) => a.localeCompare(b));
+    return tagsUstensiles;
+}
+
+//display tags
+function displayUstensilesTags(ustensiles) {
+    const tagsUstensilesContainer = document.querySelector('#panel-ustensiles');
+    tagsUstensilesContainer.innerHTML = '';
+    let tagsUstensiles = [];
+
+    ustensiles.forEach(ustensile => {
+        tagsUstensiles.push(ustensile);
+    });
+
     tagsUstensiles = [...new Set(tagsUstensiles)];
     tagsUstensiles.forEach(tag => {
         tagsUstensilesContainer.innerHTML += `
@@ -100,10 +114,16 @@ function displayTags(currentRecipes) {
     })
 
 }
-
+/*
 function displayTagsRecipes(currentRecipes) {
     displayRecipes(currentRecipes);
     displayTags(currentRecipes);
-}
+}*/
 
-export { displayAppareilsTags, displayIngredientsTags, displayTagsRecipes, getAppareilsTags, getIngredientsTags };
+export {
+    displayAppareilsTags, displayIngredientsTags,
+    displayRecipes, displayUstensilesTags,
+    getAppareilsTags, getIngredientsTags,
+    getUstensilesTags
+};
+

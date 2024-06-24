@@ -240,7 +240,7 @@ main {
   top: 0px;
 }
 
-.panel .submit-ingredient{
+.panel .submit-ingredient {
   width: 15px;
   height: 15px;
   background-color: transparent;
@@ -253,9 +253,9 @@ main {
 .ingredient-search {
   position: relative;
   margin-left: 20px;
-  top:25px;
-  height:36px;
-  border-color:  #C6C6C6;
+  top: 25px;
+  height: 36px;
+  border-color: #C6C6C6;
 }
 
 
@@ -269,7 +269,7 @@ main {
   top: 0px;
 }
 
-.panel .submit-appareil{
+.panel .submit-appareil {
   width: 15px;
   height: 15px;
   background-color: transparent;
@@ -282,9 +282,9 @@ main {
 .appareil-search {
   position: relative;
   margin-left: 20px;
-  top:25px;
-  height:36px;
-  border-color:  #C6C6C6;
+  top: 25px;
+  height: 36px;
+  border-color: #C6C6C6;
 }
 
 .panel .empty-ustensile {
@@ -297,7 +297,7 @@ main {
   top: 0px;
 }
 
-.panel .submit-ustensile{
+.panel .submit-ustensile {
   width: 15px;
   height: 15px;
   background-color: transparent;
@@ -310,9 +310,9 @@ main {
 .ustensile-search {
   position: relative;
   margin-left: 20px;
-  top:25px;
-  height:36px;
-  border-color:  #C6C6C6;
+  top: 25px;
+  height: 36px;
+  border-color: #C6C6C6;
 }
 
 
@@ -427,4 +427,41 @@ main {
   cursor: pointer;
   background-color: black;
   color: #ffd15b;
+}
+
+#empty {
+  width: 40px;
+  height: 50px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#empty:hover {
+  background-color: #dadada;
+}
+
+.panel {
+  padding-block: 15px;
+  display: block;
+  height: 0;
+  transition: height 0.3s ease-in-out;
+}
+
+.active .panel {
+  display: block;
+  height: 355px;
+}
+
+.vector {
+  transition: transform 0.3s;
+}
+
+.active .vector {
+  transform: rotate(180deg);
+}
+
+#panel-ingredients {
+  height: 270px;
 }
