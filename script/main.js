@@ -2,7 +2,6 @@ import {
   displayAppareilsTags,
   displayIngredientsTags,
   displayRecipes,
-  /*displayTagsRecipes,*/
   displayUstensilesTags,
   getAppareilsTags,
   getIngredientsTags,
@@ -10,8 +9,8 @@ import {
 } from "./displays.js";
 
 let initialRecipes = [];
-let currentRecipes = [];//global scope variable
-let filters = {//global scope variable
+let currentRecipes = []; // Global scope variable
+let filters = { // Global scope variable
   appareils: [],
   ingredients: [],
   ustensiles: [],
@@ -21,148 +20,97 @@ let initialAppareilsTags = [];
 let initialIngredientsTags = [];
 let initialUstensilesTags = [];
 
-function addIngredientTag(tagValue) {
+function createTagFilterElement(tagValue, filterName) {
+  const tagsContainer = document.querySelector(`#filters-${filterName}`);
   const tagFilterElement = document.createElement('li');
   tagFilterElement.classList.add('tag-filter');
+
   const span = document.createElement('span');
   span.textContent = tagValue;
   tagFilterElement.appendChild(span);
+
   const button = document.createElement('button');
   button.classList.add('remove-tag');
   button.textContent = 'x';
   button.addEventListener('click', () => {
-    filters.ingredients = filters.ingredients.filter(ingredient => ingredient !== tagValue);
-    updateFiltersResults()
+    filters[filterName] = filters[filterName].filter(item => item !== tagValue);
+    updateFiltersResults();
     button.parentElement.remove();
   });
+
   tagFilterElement.appendChild(button);
-  const tagsIngredientsContainer = document.querySelector('#filters-ingredients');
-  tagsIngredientsContainer.appendChild(tagFilterElement);
+  tagsContainer.appendChild(tagFilterElement);
 }
 
 function addTagIngredientClickEvent() {
   const tagsIngredients = document.querySelectorAll('.tag.tag-ingredient');
   tagsIngredients.forEach(tag => {
     tag.addEventListener('click', () => {
-      console.log("clicked!");
       const tagValue = tag.dataset.valeur;
-      console.log(tagValue);
       if (!filters.ingredients.includes(tagValue)) {
         filters.ingredients.push(tagValue);
-        addIngredientTag(tagValue);
         updateFiltersResults();
       }
-      //const parentAccordion = tag.closest('.panel');
-      //parentAccordion.style.display = 'none';
       document.querySelector('.ingredients').classList.remove('active');
     });
   });
-}
-
-function addAppareilTag(tagValue) {
-  const tagFilterElement = document.createElement('li');
-  tagFilterElement.classList.add('tag-filter');
-  const span = document.createElement('span');
-  span.textContent = tagValue;
-  tagFilterElement.appendChild(span);
-  const button = document.createElement('button');
-  button.classList.add('remove-tag');
-  button.textContent = 'x';
-  button.addEventListener('click', () => {
-    filters.appareils = filters.appareils.filter(appareil => appareil !== tagValue);
-    updateFiltersResults()
-    button.parentElement.remove();
-  });
-  tagFilterElement.appendChild(button);
-  const tagsAppareilsContainer = document.querySelector('#filters-appareils');
-  tagsAppareilsContainer.appendChild(tagFilterElement);
-
 }
 
 function addTagAppareilClickEvent() {
   const tagsAppareils = document.querySelectorAll('.tag.tag-appareil');
   tagsAppareils.forEach(tag => {
     tag.addEventListener('click', () => {
-      //const tagValue = tag.getAttribute('data-valeur');
       const tagValue = tag.dataset.valeur;
       if (!filters.appareils.includes(tagValue)) {
         filters.appareils.push(tagValue);
-        addAppareilTag(tagValue)
         updateFiltersResults();
-        //tagsAppareilsContainer.innerHTML += `<li class="tag-filter"><span>${tagValue}</span> <button class="remove-tag">x</button> </li> `;
-      } /*else {
-        filters.appareils = filters.appareils.filter(appareil => appareil !== tagValue);
-      }*/
-      //const parentAccordion = tag.closest('.panel');
-      //parentAccordion.style.display = 'none';
+      }
       document.querySelector('.appareils').classList.remove('active');
     });
   });
 }
 
-
-function addUstensileTag(tagValue) {
-  const tagsUstensilesContainer = document.querySelector('#filters-ustensiles');
-  const tagFilterElement = document.createElement('li');
-  tagFilterElement.classList.add('tag-filter');
-  const span = document.createElement('span');
-  span.textContent = tagValue;
-  tagFilterElement.appendChild(span);
-  const button = document.createElement('button');
-  button.classList.add('remove-tag');
-  button.textContent = 'x';
-  button.addEventListener('click', () => {
-    filters.ustensiles = filters.ustensiles.filter(ustensile => ustensile !== tagValue);
-    console.log("filters.ustensiles");
-    console.log(tagValue);
-    console.log(filters.ustensiles);
-
-    updateFiltersResults()
-    button.parentElement.remove();
-  });
-  tagFilterElement.appendChild(button);
-  tagsUstensilesContainer.appendChild(tagFilterElement);
-
-}
-
 function addTagUstensileClickEvent() {
-  const tagsUstensiles = document.querySelectorAll('.tag-ustensile');
+  const tagsUstensiles = document.querySelectorAll('.tag.tag-ustensile');
   tagsUstensiles.forEach(tag => {
     tag.addEventListener('click', () => {
       const tagValue = tag.dataset.valeur;
       if (!filters.ustensiles.includes(tagValue)) {
         filters.ustensiles.push(tagValue);
-        addUstensileTag(tagValue)
         updateFiltersResults();
       }
-      //const parentAccordion = tag.closest('.panel');
-      //parentAccordion.style.display = 'none';
       document.querySelector('.ustensiles').classList.remove('active');
     });
   });
 }
 
 function applyFilters() {
-  // apply filters on appareils and ingredients and ustensiles
-  console.log("avant filtres: ");
+  // Apply filters on appareils, ingredients, and ustensiles
+  console.log("Before filters:");
   console.log(currentRecipes);
-
-
   currentRecipes = initialRecipes.filter(recipe => {
-    const appareils = recipe.appliance;
     const ingredients = recipe.ingredients.map(ingredient => ingredient.ingredient);
     const ustensiles = recipe.ustensils;
-    console.log("appareils: ");
+    const appareils = recipe.appliance;
+    console.log("Appareils:");
     console.log(appareils);
-    console.log("ingredients: ");
+    console.log("Ingredients:");
     console.log(ingredients);
-    console.log("ustensiles: ");
+    console.log("Ustensiles:");
     console.log(ustensiles);
-    return filters.appareils.every(appareil => appareils.includes(appareil)) &&
-      filters.ingredients.every(ingredient => ingredients.includes(ingredient)) &&
-      filters.ustensiles.every(ustensile => ustensiles.includes(ustensile));
-  });
-  console.log("après filtres: ");
+
+  // Check if all selected ingredients exist in the recipe (any of them)
+  const allIngredients = filters.ingredients.every(ingredient => ingredients.some(recipeIngredient => recipeIngredient.toLowerCase().includes(ingredient.toLowerCase())));
+
+  // Check if all selected appareils exist in the recipe (any of them)
+  const allAppareils = filters.appareils.every(appareil => appareils.toLowerCase().includes(appareil.toLowerCase()));
+
+  // Check if all selected ustensiles exist in the recipe (unchanged)
+  const allUstensiles = filters.ustensiles.every(ustensile => ustensiles.includes(ustensile));
+
+  return allIngredients && allAppareils && allUstensiles;
+});
+  console.log("After filters:");
   console.log(currentRecipes);
 }
 
@@ -182,8 +130,7 @@ function applyTagsClickEvent() {
 function updateFiltersResults() {
   console.log("filters");
   console.log(filters);
-  applyFilters();//mise à jour currentRecipes
-  //displayTagsRecipes(currentRecipes);
+  applyFilters();// This will filter currentRecipes based on filters
   displayRecipes(currentRecipes);
   applyTagsClickEvent();
 }
