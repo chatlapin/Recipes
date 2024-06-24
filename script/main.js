@@ -8,18 +8,20 @@ import {
   getUstensilesTags
 } from "./displays.js";
 
-let initialRecipes = [];
-let currentRecipes = []; // Global scope variable
-let filters = { // Global scope variable
-  appareils: [],
-  ingredients: [],
-  ustensiles: [],
-};
+(function () {
+  // Private variables
+  let initialRecipes = [];
+  let currentRecipes = [];
+  let filters = {
+    appareils: [],
+    ingredients: [],
+    ustensiles: [],
+  };
+  let initialAppareilsTags = [];
+  let initialIngredientsTags = [];
+  let initialUstensilesTags = [];
 
-let initialAppareilsTags = [];
-let initialIngredientsTags = [];
-let initialUstensilesTags = [];
-
+  // Public functions
 function createTagFilterElement(tagValue, filterName) {
   const tagsContainer = document.querySelector(`#filters-${filterName}`);
   const tagFilterElement = document.createElement('li');
@@ -49,6 +51,7 @@ function addTagIngredientClickEvent() {
       const tagValue = tag.dataset.valeur;
       if (!filters.ingredients.includes(tagValue)) {
         filters.ingredients.push(tagValue);
+        createTagFilterElement(tagValue, 'ingredients'); //tagValue is to be added to the filters-ingredients
         updateFiltersResults();
       }
       document.querySelector('.ingredients').classList.remove('active');
@@ -63,6 +66,7 @@ function addTagAppareilClickEvent() {
       const tagValue = tag.dataset.valeur;
       if (!filters.appareils.includes(tagValue)) {
         filters.appareils.push(tagValue);
+        createTagFilterElement(tagValue, 'appareils');
         updateFiltersResults();
       }
       document.querySelector('.appareils').classList.remove('active');
@@ -77,6 +81,7 @@ function addTagUstensileClickEvent() {
       const tagValue = tag.dataset.valeur;
       if (!filters.ustensiles.includes(tagValue)) {
         filters.ustensiles.push(tagValue);
+        createTagFilterElement(tagValue, 'ustensiles');
         updateFiltersResults();
       }
       document.querySelector('.ustensiles').classList.remove('active');
@@ -119,7 +124,6 @@ async function getInitialRecipes() {
   const data = await response.json();
   return data;
 }
-
 
 function applyTagsClickEvent() {
   addTagIngredientClickEvent();
@@ -195,20 +199,6 @@ async function init() {
 }
 init();
 
-
-
-
-/*
-// Fetch data from JSON file
-fetch("assets/data/recipes.json")
-  .then((response) => response.json())
-  .then((data) => {
-    currentRecipes = data;
-    displayRecipes(currentRecipes);
-    displayTags(currentRecipes);
-  });
-*/
-
 const inputSearch = document.getElementById("search-input"); // getElementById Highly specific (unique IDs) 	Generally faster and querySelector More flexible (CSS selectors) May be slower (depending on selector complexity)// getElementById Highly specific (unique IDs) 	Generally faster and querySelector More flexible (CSS selectors) May be slower (depending on selector complexity)
 // 검색 입력 필드에 입력 이벤트 추가
 inputSearch.addEventListener("input", () => {
@@ -278,3 +268,6 @@ emptyUstensile.addEventListener('click', () => {
   displayUstensilesTags(currentUstensilesTags);
   addTagUstensileClickEvent();
 });
+
+init();
+})();
