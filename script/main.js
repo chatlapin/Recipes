@@ -135,6 +135,19 @@ function updateFiltersResults() {
   applyTagsClickEvent();
 }
 
+// New function for combined search
+function performCombinedSearch(searchValue) {
+  currentRecipes = initialRecipes.filter((recipe) =>
+    recipe.name.toLowerCase().includes(searchValue) ||
+    recipe.description.toLowerCase().includes(searchValue) ||
+    recipe.ingredients.some(ingredient =>
+      ingredient.ingredient.toLowerCase().includes(searchValue)) ||
+    filters.appareils.some(appareil => appareil.toLowerCase().includes(searchValue)) ||
+    filters.ingredients.some(ingredient => ingredient.toLowerCase().includes(searchValue)) ||
+    filters.ustensiles.some(ustensile => ustensile.toLowerCase().includes(searchValue))
+  );
+}
+
 // For ingredient search
 const ingredientSearch = document.getElementById("ingredient-search");
 ingredientSearch.addEventListener("input", () => {
