@@ -26,10 +26,10 @@ function displayRecipes(currentRecipes) {
               ${recipeData.ingredients
                 .map(
                     (ingredient) => `
-                  <li>${ingredient.ingredient} : ${ingredient.quantity
+                  <li>${ingredient.ingredient} <br/> <span> ${ingredient.quantity
                             ? ingredient.quantity + " " + (ingredient.unit || "")
                             : ""
-                        }</li>
+                        } </span></li>
                 `
                 )
                 .join("")}

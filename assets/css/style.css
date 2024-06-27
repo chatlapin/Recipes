@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;700&display=swap");
 
+:root {
+  --primary-color: #ffd15b;
+  --grey: #7A7A7A;
+}
+
 *,
 *::before,
 *::after {
@@ -51,7 +56,7 @@ main {
 }
 
 .hero__title {
-  color: #ffd15b;
+  color: var(--primary-color);
   text-align: center;
 }
 
@@ -74,7 +79,13 @@ main {
 }
 
 .hero__title {
-  margin: 80px 375px 0;
+  margin: 5% 27% 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .hero__title {
+    font-size: 7vw;
+  }
 }
 
 .hero__search-container {
@@ -114,7 +125,7 @@ main {
 #submit::after {
   content: "";
   border-radius: 10px;
-  background-color: #ffd15b;
+  background-color: var(--primary-color);
   bottom: 0;
   left: 0;
   opacity: 0;
@@ -155,7 +166,7 @@ main {
 #submit::after {
   content: "";
   border-radius: 10px;
-  background-color: #ffd15b;
+  background-color: var(--primary-color);
   bottom: 0;
   left: 0;
   opacity: 0;
@@ -180,6 +191,7 @@ main {
   display: flex;
   justify-content: space-between;
   width: 95%;
+  flex-wrap: wrap;
 }
 
 .accordion {
@@ -198,29 +210,37 @@ main {
   border-radius: 11px;
   position: relative;
   text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
+/*
 .active,
 .accordion:hover {
   background-color: white;
-}
+}*/
 
 .panel {
   padding: 0 18px;
+  padding: 0;
   display: none;
   background-color: white;
   overflow: hidden;
   position: absolute;
   top: 56px;
-  left: 7px;
+  left: 5px;
   z-index: 1;
-  width: 195px;
+  width: 235px;
+  border-bottom-left-radius: 11px;
+  border-bottom-right-radius: 11px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
 }
 
 .panel ul {
   list-style-type: none;
   padding: 0;
-  height: 500px;
+  max-height: 500px;
   overflow-y: scroll;
 }
 
@@ -230,25 +250,7 @@ main {
   position: relative;
 }
 
-.panel .empty-ingredient {
-  width: 15px;
-  height: 15px;
-  background-color: transparent;
-  border: none;
-  position: absolute;
-  right: 35px;
-  top: 0px;
-}
 
-.panel .submit-ingredient {
-  width: 15px;
-  height: 15px;
-  background-color: transparent;
-  border: none;
-  position: absolute;
-  right: 19px;
-  top: 5px;
-}
 
 .ingredient-search {
   position: relative;
@@ -259,25 +261,7 @@ main {
 }
 
 
-.panel .empty-appareil {
-  width: 15px;
-  height: 15px;
-  background-color: transparent;
-  border: none;
-  position: absolute;
-  right: 35px;
-  top: 0px;
-}
 
-.panel .submit-appareil {
-  width: 15px;
-  height: 15px;
-  background-color: transparent;
-  border: none;
-  position: absolute;
-  right: 19px;
-  top: 5px;
-}
 
 .appareil-search {
   position: relative;
@@ -287,17 +271,19 @@ main {
   border-color: #C6C6C6;
 }
 
-.panel .empty-ustensile {
+
+.panel .empty {
   width: 15px;
   height: 15px;
   background-color: transparent;
   border: none;
   position: absolute;
-  right: 35px;
+  right: 45px;
   top: 0px;
 }
 
-.panel .submit-ustensile {
+
+.panel .loupe {
   width: 15px;
   height: 15px;
   background-color: transparent;
@@ -324,6 +310,25 @@ main {
   grid-gap: 40px;
   justify-content: space-between;
 }
+
+@media screen and (max-width: 1200px) {
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .card {
+    margin: auto;
+  }
+
+}
+
+
 
 .card {
   background-color: white;
@@ -353,7 +358,7 @@ main {
 }
 
 .user-text {
-  background-color: #ffd15b;
+  background-color: var(--primary-color);
   border-radius: 14px;
   padding: 5px 15px;
   position: absolute;
@@ -365,6 +370,24 @@ main {
   padding: 20px;
 }
 
+.card-content ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.card-content li {
+  width: 45%;
+}
+
+.card-content li span {
+  font-size: 14px;
+  color: var(--grey);
+}
+
 .card h2 {
   font: 18px "Anton", sans-serif;
   font-weight: 400;
@@ -373,6 +396,7 @@ main {
 .card h3 {
   font: 12px "Manrope", sans-serif;
   font-weight: 700;
+  color: var(--grey);
 }
 
 .card p {
@@ -391,7 +415,7 @@ main {
 }
 
 .tag:hover {
-  background-color: #ffd15b;
+  background-color: var(--primary-color);
   cursor: pointer;
 }
 
@@ -404,7 +428,7 @@ main {
 }
 
 .tag-filter {
-  background-color: #ffd15b;
+  background-color: var(--primary-color);
   border-radius: 10px;
   padding: 17px;
   display: flex;
@@ -426,7 +450,7 @@ main {
 .tag-filter button:hover {
   cursor: pointer;
   background-color: black;
-  color: #ffd15b;
+  color: var(--primary-color);
 }
 
 #empty {
@@ -443,7 +467,6 @@ main {
 }
 
 .panel {
-  padding-block: 15px;
   display: block;
   height: 0;
   transition: height 0.3s ease-in-out;
